@@ -198,6 +198,234 @@ body {
   background: #fffdf8;
 }
 
+.pet-name-elsa {
+  background: #fffdf8;
+}
+
+.pet-name-oreo {
+  background: var(--gold-light);
+}
+
+.oreo {
+  position: fixed;
+  top: 92px;
+  right: 88px;
+  z-index: 45;
+  width: 165px;
+  height: 145px;
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  filter: drop-shadow(0 11px 9px rgb(15 31 71 / .24));
+}
+
+.oreo[data-dragging="true"] {
+  z-index: 90;
+  cursor: grabbing;
+  filter: drop-shadow(0 17px 12px rgb(15 31 71 / .34));
+}
+
+.oreo-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-origin: 50% 100%;
+  transition: transform 180ms ease;
+}
+
+.oreo[data-dragging="true"] .oreo-art {
+  transform: translateY(-5px) scale(1.045) rotate(1deg);
+}
+
+.oreo[data-dragging="true"] .pet-name {
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.oreo-tail {
+  animation: oreo-tail-wave .8s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 82% 80%;
+}
+
+.oreo-body {
+  animation: oreo-breathe 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.oreo-head {
+  animation: oreo-head-tilt 2.8s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 50% 82%;
+}
+
+.elsa {
+  --hamster-eye-x: 0px;
+  --hamster-eye-y: 0px;
+  position: fixed;
+  bottom: 42px;
+  left: calc(52% - 70px);
+  z-index: 52;
+  width: 140px;
+  height: 122px;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 8px rgb(15 31 71 / .24));
+}
+
+.elsa-glow {
+  position: absolute;
+  bottom: -22px;
+  left: -25px;
+  z-index: -1;
+  width: 190px;
+  height: 170px;
+  border-radius: 50%;
+  background: #fffdf8;
+  opacity: .18;
+  transform: scale(.84);
+  transition: background 260ms ease, opacity 260ms ease, transform 260ms ease;
+}
+
+.hamster-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-origin: 50% 100%;
+}
+
+.hamster-body {
+  animation: hamster-breathe 2.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.hamster-pupils {
+  transform: translate(var(--hamster-eye-x), var(--hamster-eye-y));
+  transition: transform 90ms linear;
+}
+
+.hamster-calm-face,
+.hamster-happy-face,
+.hamster-upset-face,
+.hamster-smile,
+.hamster-frown {
+  transition: opacity 160ms ease;
+}
+
+.hamster-happy-face,
+.hamster-upset-face,
+.hamster-frown {
+  opacity: 0;
+}
+
+.elsa-hearts,
+.elsa-stress {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.elsa-hearts {
+  top: -10px;
+  left: 25px;
+  width: 92px;
+  height: 62px;
+}
+
+.elsa-hearts i {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background: var(--gold-light);
+  transform: rotate(45deg);
+}
+
+.elsa-hearts i::before,
+.elsa-hearts i::after {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: inherit;
+  content: "";
+}
+
+.elsa-hearts i::before { left: -5px; }
+.elsa-hearts i::after { top: -5px; }
+.elsa-hearts i:nth-child(1) { bottom: 4px; left: 3px; }
+.elsa-hearts i:nth-child(2) { top: 2px; left: 40px; transform: rotate(45deg) scale(.72); }
+.elsa-hearts i:nth-child(3) { right: 2px; bottom: 8px; transform: rotate(45deg) scale(.56); }
+
+.elsa-stress {
+  top: 7px;
+  right: -2px;
+  width: 34px;
+  height: 43px;
+}
+
+.elsa-stress i {
+  position: absolute;
+  top: 1px;
+  left: 15px;
+  width: 5px;
+  height: 25px;
+  border-radius: 999px;
+  background: var(--gold-light);
+  transform-origin: 50% 36px;
+}
+
+.elsa-stress i:nth-child(1) { transform: rotate(-35deg); }
+.elsa-stress i:nth-child(2) { transform: rotate(0); }
+.elsa-stress i:nth-child(3) { transform: rotate(35deg); }
+
+.elsa[data-mood="happy"] .elsa-glow {
+  opacity: .5;
+  transform: scale(1);
+}
+
+.elsa[data-mood="happy"] .hamster-calm-face,
+.elsa[data-mood="happy"] .hamster-upset-face {
+  opacity: 0;
+}
+
+.elsa[data-mood="happy"] .hamster-happy-face,
+.elsa[data-mood="happy"] .elsa-hearts {
+  opacity: 1;
+}
+
+.elsa[data-mood="happy"] .hamster-body {
+  animation: hamster-happy 430ms ease-in-out infinite;
+}
+
+.elsa[data-mood="happy"] .elsa-hearts i:nth-child(1) { animation: heart-float 1s ease-out infinite; }
+.elsa[data-mood="happy"] .elsa-hearts i:nth-child(2) { animation: heart-float 1s .22s ease-out infinite; }
+.elsa[data-mood="happy"] .elsa-hearts i:nth-child(3) { animation: heart-float 1s .44s ease-out infinite; }
+
+.elsa[data-mood="upset"] .elsa-glow {
+  background: var(--gold-light);
+  opacity: .28;
+  transform: scale(.9);
+}
+
+.elsa[data-mood="upset"] .hamster-art {
+  animation: hamster-huff 180ms ease-in-out infinite alternate;
+}
+
+.elsa[data-mood="upset"] .hamster-calm-face,
+.elsa[data-mood="upset"] .hamster-happy-face,
+.elsa[data-mood="upset"] .hamster-smile {
+  opacity: 0;
+}
+
+.elsa[data-mood="upset"] .hamster-upset-face,
+.elsa[data-mood="upset"] .hamster-frown,
+.elsa[data-mood="upset"] .elsa-stress {
+  opacity: 1;
+}
+
 .click-spark {
   position: fixed;
   z-index: 78;
@@ -429,6 +657,36 @@ body {
   to { transform: rotate(3deg); }
 }
 
+@keyframes hamster-breathe {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(2px) scaleY(.985); }
+}
+
+@keyframes hamster-happy {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-7px) rotate(2deg); }
+}
+
+@keyframes hamster-huff {
+  from { transform: translateX(-2px) rotate(-1deg); }
+  to { transform: translateX(2px) rotate(1deg); }
+}
+
+@keyframes oreo-tail-wave {
+  from { transform: rotate(-13deg); }
+  to { transform: rotate(16deg); }
+}
+
+@keyframes oreo-breathe {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(2px) scaleY(.987); }
+}
+
+@keyframes oreo-head-tilt {
+  from { transform: rotate(-1.5deg); }
+  to { transform: rotate(2deg); }
+}
+
 @keyframes heart-float {
   0% { opacity: 0; translate: 0 8px; }
   25% { opacity: 1; }
@@ -480,6 +738,33 @@ body {
     transform-origin: bottom left;
   }
 
+  .elsa {
+    bottom: 38px;
+    left: calc(48% - 56px);
+    width: 112px;
+    height: 98px;
+  }
+
+  .elsa-glow {
+    bottom: -18px;
+    left: -20px;
+    width: 152px;
+    height: 138px;
+  }
+
+  .elsa-hearts,
+  .elsa-stress {
+    transform: scale(.78);
+    transform-origin: bottom center;
+  }
+
+  .oreo {
+    top: 130px;
+    right: 12px;
+    width: 118px;
+    height: 104px;
+  }
+
   .math-lines {
     stroke-width: 6;
     opacity: .18;
@@ -496,6 +781,13 @@ body {
   .monty[data-happy="true"] .dog-body,
   .monty[data-happy="true"] .dog-head,
   .monty[data-happy="true"] .monty-hearts i,
+  .hamster-body,
+  .elsa[data-mood="happy"] .hamster-body,
+  .elsa[data-mood="happy"] .elsa-hearts i,
+  .elsa[data-mood="upset"] .hamster-art,
+  .oreo-tail,
+  .oreo-body,
+  .oreo-head,
   .click-spark.is-burst i {
     animation: none;
   }
@@ -506,7 +798,16 @@ body {
   .dog-ear,
   .dog-tongue,
   .monty-glow,
-  .monty-hearts {
+  .monty-hearts,
+  .hamster-pupils,
+  .hamster-calm-face,
+  .hamster-happy-face,
+  .hamster-upset-face,
+  .hamster-smile,
+  .hamster-frown,
+  .elsa-glow,
+  .elsa-hearts,
+  .elsa-stress {
     transition: none;
   }
 }
