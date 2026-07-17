@@ -6,17 +6,17 @@
     <meta name="theme-color" content="#162d62">
     <meta
       name="description"
-      content="Yeti, a fluffy white cursor cat, plays with Monty the black dog in a maths-themed world."
+      content="Yeti the white cat, Monty the black dog, Oreo the brown dog, and Elsa the white dwarf hamster play in a maths-themed world."
     >
-    <title>Mathkari Pets — Yeti &amp; Monty</title>
+    <title>Mathkari Pets — Yeti, Monty, Oreo &amp; Elsa</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23162d62%22/><circle cx=%2250%22 cy=%2250%22 r=%2222%22 fill=%22%23ebac33%22/></svg>">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
   </head>
   <body>
-    <h1 class="sr-only">Yeti the white cat and Monty the black dog</h1>
+    <h1 class="sr-only">Yeti the white cat, Monty the black dog, Oreo the brown dog, and Elsa the white dwarf hamster</h1>
     <p class="sr-only">
-      Move your pointer to guide Yeti. Monty gets happy when Yeti comes near him.
+      Move your pointer to guide Yeti and drag Monty. Elsa likes Monty and Oreo but gets upset when Yeti comes near her.
     </p>
 
     <header class="pet-note">
@@ -112,6 +112,95 @@
         </svg>
       </div>
       <span class="pet-name pet-name-yeti">Yeti</span>
+    </div>
+
+    <div class="elsa" aria-hidden="true" data-mood="calm">
+      <div class="elsa-glow"></div>
+      <div class="elsa-hearts"><i></i><i></i><i></i></div>
+      <div class="elsa-stress"><i></i><i></i><i></i></div>
+      <svg class="hamster-art" viewBox="0 0 140 122" role="presentation">
+        <ellipse cx="70" cy="115" rx="48" ry="6" fill="#0f1f47" opacity=".2" />
+
+        <g class="hamster-body">
+          <circle cx="36" cy="40" r="19" fill="#fffdf8" stroke="#162d62" stroke-width="5" />
+          <circle cx="104" cy="40" r="19" fill="#fffdf8" stroke="#162d62" stroke-width="5" />
+          <circle cx="36" cy="40" r="10" fill="#f2c5d2" />
+          <circle cx="104" cy="40" r="10" fill="#f2c5d2" />
+
+          <path d="M22 69c0-30 20-49 48-49s48 19 48 49c0 28-18 44-48 44S22 97 22 69Z" fill="#fffdf8" stroke="#162d62" stroke-width="5" />
+          <path d="m47 26 7-9 6 8 9-10 7 10 8-7 5 10" fill="#fffdf8" stroke="#162d62" stroke-linejoin="round" stroke-width="4" />
+          <path d="M35 73c-5 16 2 31 17 37M105 73c5 16-2 31-17 37" fill="none" stroke="#e1e9f7" stroke-linecap="round" stroke-width="7" />
+
+          <g class="hamster-calm-face">
+            <ellipse cx="52" cy="62" rx="9" ry="10" fill="white" stroke="#162d62" stroke-width="3" />
+            <ellipse cx="88" cy="62" rx="9" ry="10" fill="white" stroke="#162d62" stroke-width="3" />
+            <g class="hamster-pupils">
+              <circle cx="53" cy="64" r="4" fill="#162d62" />
+              <circle cx="87" cy="64" r="4" fill="#162d62" />
+            </g>
+          </g>
+
+          <g class="hamster-happy-face">
+            <path d="M43 63c5-7 12-7 18 0M79 63c5-7 12-7 18 0" fill="none" stroke="#162d62" stroke-linecap="round" stroke-width="4" />
+          </g>
+
+          <g class="hamster-upset-face">
+            <path d="m42 55 18 6m38-6-18 6" fill="none" stroke="#162d62" stroke-linecap="round" stroke-width="4" />
+            <circle cx="53" cy="65" r="4" fill="#162d62" />
+            <circle cx="87" cy="65" r="4" fill="#162d62" />
+          </g>
+
+          <circle cx="42" cy="78" r="8" fill="#f2c5d2" opacity=".72" />
+          <circle cx="98" cy="78" r="8" fill="#f2c5d2" opacity=".72" />
+          <path d="m64 74 6 4 6-4c0-5-12-5-12 0Z" fill="#d98fa2" stroke="#162d62" stroke-linejoin="round" stroke-width="2" />
+          <path class="hamster-smile" d="M70 78v3c-4 5-10 3-10 0m10 0c4 5 10 3 10 0" fill="none" stroke="#162d62" stroke-linecap="round" stroke-width="2.5" />
+          <path class="hamster-frown" d="M61 87c5-6 13-6 18 0" fill="none" stroke="#162d62" stroke-linecap="round" stroke-width="3" />
+          <path d="M45 88 23 84m22 11-21 3m71-10 22-4m-22 11 21 3" fill="none" stroke="#162d62" stroke-linecap="round" stroke-width="2" />
+
+          <ellipse cx="52" cy="104" rx="12" ry="8" fill="#fffdf8" stroke="#162d62" stroke-width="4" />
+          <ellipse cx="88" cy="104" rx="12" ry="8" fill="#fffdf8" stroke="#162d62" stroke-width="4" />
+        </g>
+      </svg>
+      <span class="pet-name pet-name-elsa">Elsa</span>
+    </div>
+
+    <div class="oreo" aria-hidden="true">
+      <svg class="oreo-art" viewBox="0 0 165 145" role="presentation">
+        <ellipse cx="82" cy="137" rx="56" ry="7" fill="#0f1f47" opacity=".2" />
+        <g class="oreo-tail">
+          <path d="M43 105C13 99 13 69 32 64c13-3 20 11 12 20" fill="none" stroke="#6e3f25" stroke-linecap="round" stroke-width="15" />
+          <path d="M31 65c6-2 11 1 14 6" fill="none" stroke="#a86c3d" stroke-linecap="round" stroke-width="5" />
+        </g>
+
+        <g class="oreo-body">
+          <path d="M48 88c-10 13-12 32-7 47h88c6-22-3-42-21-49z" fill="#8b542f" stroke="#162d62" stroke-linejoin="round" stroke-width="5" />
+          <path d="M62 109v27M111 109v27" stroke="#6e3f25" stroke-linecap="round" stroke-width="13" />
+          <path d="M58 135h19M106 135h19" stroke="#4c2b20" stroke-linecap="round" stroke-width="10" />
+          <path d="M72 96c9 5 22 5 31 0" fill="none" stroke="#f5c85a" stroke-width="6" />
+          <circle cx="87" cy="101" r="8" fill="#f5c85a" />
+
+          <g class="oreo-head">
+            <path d="M49 38C28 21 28 57 42 75l21-10z" fill="#5b3424" stroke="#162d62" stroke-linejoin="round" stroke-width="5" />
+            <path d="M123 38c21-17 21 19 7 37l-21-10z" fill="#5b3424" stroke="#162d62" stroke-linejoin="round" stroke-width="5" />
+            <path d="M42 64c0-27 18-43 45-43s45 16 45 43-17 43-45 43-45-16-45-43Z" fill="#8b542f" stroke="#162d62" stroke-width="5" />
+            <path d="M46 48c10-18 24-27 41-27s31 9 41 27c-11-7-22-10-34-9-3 9-9 15-18 19-8-9-18-12-30-10Z" fill="#a86c3d" />
+            <path d="M60 35c9-8 18-12 27-12 10 0 19 4 27 12-11 1-20 5-27 12-7-7-16-11-27-12Z" fill="#f5e1c9" opacity=".9" />
+
+            <ellipse cx="69" cy="62" rx="10" ry="12" fill="white" />
+            <ellipse cx="106" cy="62" rx="10" ry="12" fill="white" />
+            <circle cx="71" cy="65" r="5" fill="#162d62" />
+            <circle cx="104" cy="65" r="5" fill="#162d62" />
+            <circle cx="69" cy="63" r="1.3" fill="white" />
+            <circle cx="102" cy="63" r="1.3" fill="white" />
+
+            <ellipse cx="87" cy="82" rx="25" ry="19" fill="#f5e1c9" />
+            <path d="M79 76c0-7 16-7 16 0-1 6-15 6-16 0Z" fill="#34211b" />
+            <path d="M87 82c0 9-15 9-16 1m16-1c0 9 15 9 16 1" fill="none" stroke="#34211b" stroke-linecap="round" stroke-width="3" />
+            <path d="M79 92c6 4 11 4 16 0" fill="none" stroke="#d98fa2" stroke-linecap="round" stroke-width="4" />
+          </g>
+        </g>
+      </svg>
+      <span class="pet-name pet-name-oreo">Oreo</span>
     </div>
 
     <div class="monty" aria-hidden="true" data-happy="false">
