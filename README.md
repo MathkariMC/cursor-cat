@@ -8,6 +8,7 @@ A tiny, dependency-free GitHub Pages website featuring Yeti, a fluffy white math
 - Eye tracking, breathing, and tail animations
 - Click or tap pounce interaction
 - Proximity-based Monty reactions
+- Drag-and-drop Monty movement
 - Touch-screen and reduced-motion support
 - Plain HTML, CSS, and JavaScript with no build step
 

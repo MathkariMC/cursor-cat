@@ -4,6 +4,7 @@ const spark = document.querySelector(".click-spark")
 const monty = document.querySelector(".monty")
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+const nameLabelSpace = 32
 
 let size = { width: cat.offsetWidth, height: cat.offsetHeight }
 let targetX = Math.max(22, window.innerWidth * .14)
@@ -12,23 +13,43 @@ let currentX = targetX
 let currentY = targetY
 let facing = 1
 let pounceTimer
-let montyCenter = { x: window.innerWidth - 110, y: window.innerHeight - 90 }
+const initialMontyBox = monty.getBoundingClientRect()
+let montyPosition = { x: initialMontyBox.left, y: initialMontyBox.top }
+let montyCenter = {
+  x: initialMontyBox.left + initialMontyBox.width / 2,
+  y: initialMontyBox.top + initialMontyBox.height / 2,
+}
 let montyIsHappy = false
+let draggingMonty = false
+let dragPointerId = null
+let dragOffset = { x: 0, y: 0 }
 
 function clamp(value, minimum, maximum) {
   return Math.min(Math.max(minimum, value), maximum)
 }
 
+function moveMonty(x, y) {
+  montyPosition = { x, y }
+  monty.style.transform = `translate3d(${x}px, ${y}px, 0)`
+  montyCenter = {
+    x: x + monty.offsetWidth / 2,
+    y: y + monty.offsetHeight / 2,
+  }
+}
+
 function measureScene() {
   size = { width: cat.offsetWidth, height: cat.offsetHeight }
-  const montyBox = monty.getBoundingClientRect()
-  montyCenter = {
-    x: montyBox.left + montyBox.width / 2,
-    y: montyBox.top + montyBox.height / 2,
-  }
+
+  montyPosition.x = clamp(montyPosition.x, 8, window.innerWidth - monty.offsetWidth - 8)
+  montyPosition.y = clamp(
+    montyPosition.y,
+    8,
+    window.innerHeight - monty.offsetHeight - nameLabelSpace,
+  )
+  moveMonty(montyPosition.x, montyPosition.y)
 
   targetX = clamp(targetX, 12, window.innerWidth - size.width - 12)
-  targetY = clamp(targetY, 12, window.innerHeight - size.height - 12)
+  targetY = clamp(targetY, 12, window.innerHeight - size.height - nameLabelSpace)
 }
 
 function setTarget(clientX, clientY) {
@@ -37,7 +58,11 @@ function setTarget(clientX, clientY) {
   const nextFacing = offsetX < 0 ? -1 : 1
 
   targetX = clamp(clientX + offsetX, 12, window.innerWidth - size.width - 12)
-  targetY = clamp(clientY - size.height / 2, 12, window.innerHeight - size.height - 12)
+  targetY = clamp(
+    clientY - size.height / 2,
+    12,
+    window.innerHeight - size.height - nameLabelSpace,
+  )
 
   if (nextFacing !== facing) {
     facing = nextFacing
@@ -94,6 +119,20 @@ function animate() {
 }
 
 window.addEventListener("pointermove", (event) => {
+  if (draggingMonty && event.pointerId === dragPointerId) {
+    const x = clamp(
+      event.clientX - dragOffset.x,
+      8,
+      window.innerWidth - monty.offsetWidth - 8,
+    )
+    const y = clamp(
+      event.clientY - dragOffset.y,
+      8,
+      window.innerHeight - monty.offsetHeight - nameLabelSpace,
+    )
+    moveMonty(x, y)
+  }
+
   if (event.pointerType !== "touch") setTarget(event.clientX, event.clientY)
 }, { passive: true })
 
@@ -101,8 +140,38 @@ window.addEventListener("pointerdown", (event) => {
   pounce(event.clientX, event.clientY)
 }, { passive: true })
 
+monty.addEventListener("pointerdown", (event) => {
+  event.preventDefault()
+  event.stopPropagation()
+  draggingMonty = true
+  dragPointerId = event.pointerId
+  dragOffset = {
+    x: event.clientX - montyPosition.x,
+    y: event.clientY - montyPosition.y,
+  }
+  monty.dataset.dragging = "true"
+  monty.setPointerCapture(event.pointerId)
+})
+
+function releaseMonty(event) {
+  if (!draggingMonty || event.pointerId !== dragPointerId) return
+  draggingMonty = false
+  dragPointerId = null
+  monty.dataset.dragging = "false"
+}
+
+window.addEventListener("pointerup", releaseMonty)
+window.addEventListener("pointercancel", releaseMonty)
+monty.addEventListener("lostpointercapture", releaseMonty)
+
 window.addEventListener("resize", measureScene)
 
 facingElement.style.setProperty("--cat-facing", String(facing))
+monty.style.right = "auto"
+monty.style.bottom = "auto"
+monty.style.left = "0"
+monty.style.top = "0"
+monty.dataset.dragging = "false"
+moveMonty(montyPosition.x, montyPosition.y)
 measureScene()
 window.requestAnimationFrame(animate)
