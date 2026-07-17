@@ -1,6 +1,6 @@
 # Pounce
 
-A tiny, dependency-free GitHub Pages website featuring Marmalade, a cat who follows your cursor and pounces when you click.
+A tiny, dependency-free GitHub Pages website featuring Yeti, a fluffy white maths cat who follows your cursor and pounces when you click.
 
 ## Features
 
