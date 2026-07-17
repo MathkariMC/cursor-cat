@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f1e7">
+    <meta
+      name="description"
+      content="A playful little cat that follows your cursor around the page."
+    >
+    <title>Pounce — your cursor's new best friend</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐈</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Pounce home">
+        <span class="brand-mark">P</span>
+        <span>Pounce</span>
+      </a>
+      <p class="status"><span></span> ready to play</p>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="eyebrow"><span>✦</span> An extremely important website</div>
+        <h1 id="hero-title">Your cursor has a <em>new best friend.</em></h1>
+        <p class="intro">
+          Meet Marmalade. She has no meetings, no inbox, and absolutely no
+          intention of letting your pointer out of her sight.
+        </p>
+
+        <div class="instructions" aria-label="How to play">
+          <div class="mouse-icon" aria-hidden="true"><span></span></div>
+          <p class="desktop-instruction">Move your cursor. She&apos;ll do the rest.</p>
+          <p class="touch-instruction">Tap anywhere. She&apos;ll come running.</p>
+        </div>
+      </section>
+
+      <section class="details" aria-label="About Marmalade">
+        <article>
+          <span class="detail-number">01</span>
+          <div><h2>Moves</h2><p>with suspicious determination</p></div>
+        </article>
+        <article>
+          <span class="detail-number">02</span>
+          <div><h2>Watches</h2><p>every tiny cursor decision</p></div>
+        </article>
+        <article>
+          <span class="detail-number">03</span>
+          <div><h2>Purrs</h2><p>in your general direction</p></div>
+        </article>
+      </section>
+    </main>
+
+    <div class="heart" aria-hidden="true">♥</div>
+    <div class="cursor-cat" aria-hidden="true" data-awake="false">
+      <p class="speech">Oh! There you are.</p>
+      <div class="cat-facing">
+        <svg class="cat-art" viewBox="0 0 150 132" role="presentation">
+          <g class="cat-tail">
+            <path
+              d="M111 99c27 8 38-8 27-25-6-9-16-6-17 2"
+              fill="none"
+              stroke="#332f3e"
+              stroke-linecap="round"
+              stroke-width="13"
+            />
+            <path
+              d="M135 76c-4-4-8-4-11-1"
+              fill="none"
+              stroke="#f19b57"
+              stroke-linecap="round"
+              stroke-width="5"
+            />
+          </g>
+
+          <ellipse cx="76" cy="125" rx="44" ry="6" fill="#332f3e" opacity=".12" />
+          <path
+            d="M46 75c-13 11-17 31-11 49h78c5-23-4-43-20-51z"
+            fill="#f19b57"
+            stroke="#332f3e"
+            stroke-linejoin="round"
+            stroke-width="5"
+          />
+          <path d="M57 82c-4 14-4 29 0 42M94 81c5 14 5 29 1 43" fill="none" stroke="#ffc477" stroke-linecap="round" stroke-width="7" />
+          <path d="M57 117v8M96 117v8" stroke="#332f3e" stroke-linecap="round" stroke-width="9" />
+
+          <path
+            d="M33 25 54 36 37 49zM114 25 94 36l17 13z"
+            fill="#f19b57"
+            stroke="#332f3e"
+            stroke-linejoin="round"
+            stroke-width="5"
+          />
+          <path d="m38 33 11 5-10 6zM108 33l-10 5 10 6z" fill="#f7b5aa" />
+          <path
+            d="M38 57c0-22 15-33 37-33s38 11 38 33S98 92 75 92 38 78 38 57Z"
+            fill="#f19b57"
+            stroke="#332f3e"
+            stroke-width="5"
+          />
+          <path d="M69 27c-4 9-3 18 0 23M83 27c4 9 3 18 0 23" fill="none" stroke="#ffc477" stroke-linecap="round" stroke-width="6" />
+
+          <ellipse cx="60" cy="57" rx="10" ry="11" fill="#fffdf8" stroke="#332f3e" stroke-width="3" />
+          <ellipse cx="91" cy="57" rx="10" ry="11" fill="#fffdf8" stroke="#332f3e" stroke-width="3" />
+          <g class="cat-pupils">
+            <circle cx="61" cy="59" r="4.5" fill="#332f3e" />
+            <circle cx="92" cy="59" r="4.5" fill="#332f3e" />
+            <circle cx="59.5" cy="57" r="1.2" fill="white" />
+            <circle cx="90.5" cy="57" r="1.2" fill="white" />
+          </g>
+
+          <path d="m70 70 6 4 6-4c0-4-12-4-12 0Z" fill="#d96d77" stroke="#332f3e" stroke-linejoin="round" stroke-width="2" />
+          <path d="M76 74v4c-4 5-10 3-10 0m10 0c4 5 10 3 10 0" fill="none" stroke="#332f3e" stroke-linecap="round" stroke-width="2.5" />
+          <path d="M52 70 25 65m27 12-29 4m79-11 27-5m-27 12 28 5" fill="none" stroke="#332f3e" stroke-linecap="round" stroke-width="2.5" />
+          <path d="M56 91c11 6 27 6 38 0" fill="none" stroke="#332f3e" stroke-width="5" />
+          <circle cx="75" cy="95" r="8" fill="#332f3e" />
+          <path d="m71 95 4-4 4 4-4 4z" fill="#f6e4a7" />
+        </svg>
+      </div>
+    </div>
+
+    <footer>
+      <p>Made for wandering cursors <span>♥</span></p>
+      <p>Click anywhere for a tiny surprise.</p>
+    </footer>
+  </body>
+</html>
