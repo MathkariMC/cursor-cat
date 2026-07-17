@@ -4,6 +4,7 @@ const spark = document.querySelector(".click-spark")
 const monty = document.querySelector(".monty")
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+const nameLabelSpace = 32
 
 let size = { width: cat.offsetWidth, height: cat.offsetHeight }
 let targetX = Math.max(22, window.innerWidth * .14)
@@ -40,11 +41,15 @@ function measureScene() {
   size = { width: cat.offsetWidth, height: cat.offsetHeight }
 
   montyPosition.x = clamp(montyPosition.x, 8, window.innerWidth - monty.offsetWidth - 8)
-  montyPosition.y = clamp(montyPosition.y, 8, window.innerHeight - monty.offsetHeight - 8)
+  montyPosition.y = clamp(
+    montyPosition.y,
+    8,
+    window.innerHeight - monty.offsetHeight - nameLabelSpace,
+  )
   moveMonty(montyPosition.x, montyPosition.y)
 
   targetX = clamp(targetX, 12, window.innerWidth - size.width - 12)
-  targetY = clamp(targetY, 12, window.innerHeight - size.height - 12)
+  targetY = clamp(targetY, 12, window.innerHeight - size.height - nameLabelSpace)
 }
 
 function setTarget(clientX, clientY) {
@@ -53,7 +58,11 @@ function setTarget(clientX, clientY) {
   const nextFacing = offsetX < 0 ? -1 : 1
 
   targetX = clamp(clientX + offsetX, 12, window.innerWidth - size.width - 12)
-  targetY = clamp(clientY - size.height / 2, 12, window.innerHeight - size.height - 12)
+  targetY = clamp(
+    clientY - size.height / 2,
+    12,
+    window.innerHeight - size.height - nameLabelSpace,
+  )
 
   if (nextFacing !== facing) {
     facing = nextFacing
@@ -119,7 +128,7 @@ window.addEventListener("pointermove", (event) => {
     const y = clamp(
       event.clientY - dragOffset.y,
       8,
-      window.innerHeight - monty.offsetHeight - 8,
+      window.innerHeight - monty.offsetHeight - nameLabelSpace,
     )
     moveMonty(x, y)
   }

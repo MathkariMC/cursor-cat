@@ -173,6 +173,31 @@ body {
   animation: pounce 520ms cubic-bezier(.2, .8, .2, 1);
 }
 
+.pet-name {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  z-index: 5;
+  min-width: 58px;
+  padding: 4px 12px 5px;
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  background: var(--gold-light);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .02em;
+  text-align: center;
+  box-shadow: 0 4px 0 rgb(15 31 71 / .22);
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.pet-name-yeti {
+  background: #fffdf8;
+}
+
 .click-spark {
   position: fixed;
   z-index: 78;
@@ -222,6 +247,10 @@ body {
   z-index: 90;
   cursor: grabbing;
   filter: drop-shadow(0 18px 13px rgb(15 31 71 / .34));
+}
+
+.monty[data-dragging="true"] .pet-name {
+  transform: translateX(-50%) translateY(-3px);
 }
 
 .monty-glow {
